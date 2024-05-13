@@ -7,9 +7,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -21,6 +25,7 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import net.ezra.R
+import net.ezra.navigation.ROUTE_ADD_USER
 import net.ezra.navigation.ROUTE_LOGIN
 import net.ezra.navigation.ROUTE_SIGNUP
 import net.ezra.ui.theme.AppTheme
@@ -58,6 +63,7 @@ fun LoginScreen(navController: NavController) {
             onValueChange = {
                 email = it
             },
+            leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription ="" )},
             label = {
                 Text(text = stringResource(id = R.string.email))
             },
@@ -80,6 +86,7 @@ fun LoginScreen(navController: NavController) {
             onValueChange = {
                 password = it
             },
+            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription ="" )},
             label = {
                 Text(text = stringResource(id = R.string.password))
             },
@@ -101,6 +108,7 @@ fun LoginScreen(navController: NavController) {
             onClick = {
 
             },
+            
             modifier = Modifier.constrainAs(refButtonLogin) {
                 top.linkTo(refPassword.bottom, spacing.large)
                 start.linkTo(parent.start, spacing.extraLarge)
@@ -120,14 +128,14 @@ fun LoginScreen(navController: NavController) {
                     end.linkTo(parent.end, spacing.extraLarge)
                 }
                 .clickable {
-                    navController.navigate(ROUTE_SIGNUP) {
+                    navController.navigate(ROUTE_ADD_USER) {
                         popUpTo(ROUTE_LOGIN) { inclusive = true }
                     }
                 },
             text = stringResource(id = R.string.dont_have_account),
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onSurface
+            color = Color.White
         )
 
     }

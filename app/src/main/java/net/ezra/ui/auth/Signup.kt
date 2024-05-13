@@ -2,14 +2,21 @@ package net.ezra.ui.auth
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -36,33 +43,44 @@ fun SignupScreen(navController: NavHostController) {
 
     ConstraintLayout(
         modifier = Modifier.fillMaxSize()
+            .background(color = Color.Gray)
     ) {
         val (refHeader, refName, refEmail, refPassword, refButtonSignup, refTextSignup) = createRefs()
         val spacing = MaterialTheme.spacing
 
         Box(
             modifier = Modifier
-                .constrainAs(refHeader) {
+                .constrainAs(refHeader)
+
+                {
                     top.linkTo(parent.top, spacing.extraLarge)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     width = Dimension.fillToConstraints
                 }
                 .wrapContentSize()
-        ) {
+        )
+
+        {
+            Image(painter = painterResource(id = R.drawable.logo), contentDescription =null,
+                modifier = Modifier
+                    .fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
             AuthHeader()
         }
 
         TextField(
-            value = name,
+            value = password,
             onValueChange = {
-                name = it
+                password = it
             },
+            leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription ="" )},
             label = {
-                Text(text = stringResource(id = R.string.name))
+                Text(text = stringResource(id = R.string.password))
             },
-            modifier = Modifier.constrainAs(refName) {
-                top.linkTo(refHeader.bottom, spacing.extraLarge)
+            modifier = Modifier.constrainAs(refPassword) {
+                top.linkTo(refEmail.bottom, spacing.medium)
                 start.linkTo(parent.start, spacing.large)
                 end.linkTo(parent.end, spacing.large)
                 width = Dimension.fillToConstraints
@@ -70,8 +88,8 @@ fun SignupScreen(navController: NavHostController) {
             keyboardOptions = KeyboardOptions(
                 capitalization = KeyboardCapitalization.None,
                 autoCorrect = false,
-                keyboardType = KeyboardType.Email,
-                imeAction = ImeAction.Next
+                keyboardType = KeyboardType.Password,
+                imeAction = ImeAction.Done
             )
         )
 

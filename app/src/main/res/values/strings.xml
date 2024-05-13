@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">MVVM JetPack</string>
+    <string name="app_name">Movie spot</string>
     <string name="email">email</string>
     <string name="password">password</string>
     <string name="login">login</string>
     <string name="dont_have_account">Do not have an account?\nClick here to sign up</string>
-    <string name="name">name</string>
+    <string name="name">Chillspot movies.Your home of movies and endless entertainment</string>
     <string name="signup">signup</string>
     <string name="already_have_account">Already have an account?\nClick here to login</string>
     <string name="welcome_back">Welcome Back</string>
@@ -12,5 +12,6 @@
     <string name="home">Home</string>
     <string name="about">about</string>
     <string name="logout">logout</string>
-    <string name="mit">This is the common text</string>
+    <string name="mit">Hubspot Movies</string>
+    <string name="shopping_cart_content_desc" />
 </resources>

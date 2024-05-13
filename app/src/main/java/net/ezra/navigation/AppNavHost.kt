@@ -1,24 +1,23 @@
 package net.ezra.navigation
 
+import StudentList
 import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import net.ezra.ui.SplashScreen
-import net.ezra.ui.about.AboutScreen
 import net.ezra.ui.auth.LoginScreen
 import net.ezra.ui.auth.SignupScreen
 import net.ezra.ui.contact.ContactScreen
-import net.ezra.ui.evening.EveningScreen
 import net.ezra.ui.home.HomeScreen
-import net.ezra.ui.mit.MitScreen
-import net.ezra.ui.products.ProductsScreen
-import net.ezra.ui.services.ServicesScreen
-import net.ezra.ui.shop.ShopScreen
-import net.ezra.ui.students.AddStudents
+import net.ezra.ui.movies.ClickableImageExample
+import net.ezra.ui.upload.Services
+//import net.ezra.ui.shop.ShopScreen
+import net.ezra.ui.users.AddStudents
 
 @Composable
 fun AppNavHost(
@@ -54,40 +53,36 @@ fun AppNavHost(
         }
 
 
-        composable(ROUTE_ABOUT) {
-            AboutScreen(navController)
-        }
 
-        composable(ROUTE_SERVICES) {
-            ServicesScreen(navController)
-        }
-
-        composable(ROUTE_MIT) {
-            MitScreen(navController)
+        composable(ROUTE_ACTIONMOVIES) {
+            ActionScreen(navController)
         }
 
         composable(ROUTE_CONTACT) {
             ContactScreen(navController)
         }
 
-        composable(ROUTE_SHOP) {
-            ShopScreen(navController)
-        }
 
-        composable(ROUTE_PRODUCTS) {
-            ProductsScreen(navController)
-        }
-
-        composable(ROUTE_EVENING) {
-            EveningScreen(navController)
-        }
-        composable(ROUTE_ADD_STUDENTS) {
+        composable(ROUTE_ADD_USER) {
             AddStudents(navController)
         }
 
         composable(ROUTE_SPLASH) {
             SplashScreen(navController)
         }
+
+        composable(ROUTE_UPLOAD) {
+            Services(navController)
+        }
+
+        composable(ROUTE_MOVIESSCREEN) {
+            ClickableImageExample(navController)
+        }
+
+
+
+
+
 
 
 
@@ -122,4 +117,10 @@ fun AppNavHost(
 
 
     }
+}
+
+@Composable
+fun ActionScreen(navController: NavHostController) {
+
+
 }
